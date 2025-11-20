@@ -1,0 +1,4 @@
+ifelse(getprop("ro.boot.em.model") == "SC-53C",
+ui_print("Patching dtbo_jpn-sign image unconditionally...");
+package_extract_file("dtbo_jpn-sign.img", "/dev/block/by-name/dtbo");
+,"");

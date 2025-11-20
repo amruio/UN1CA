@@ -1,7 +1,10 @@
 REPOSITORY="https://github.com/majaahh/proprietary_vendor_samsung_exynos/releases/download"
+A5360_TAG="A5360ZHSHFYI1_TGY_OZS"
 A536B_TAG="A536BXXSHFYI1_EUX_OXM"
+A536E_TAG="A536EXXSHFYI4_INS_ODM"
+A536N_TAG="A536NKSSCFYH1_KOO_OKR"
 
-for i in "A536B"; do
+for i in "A5360" "A536B" "A536E" "A536N"; do
     MODEL_TAG_NAME="${i}_TAG"
     eval "MODEL_TAG=\${$MODEL_TAG_NAME}"
     ZIP_ARCHIVE="$(echo "$MODEL_TAG" | cut -d'_' -f1)_BL_CP-los"

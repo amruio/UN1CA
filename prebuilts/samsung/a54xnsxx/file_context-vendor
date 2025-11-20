@@ -1,0 +1,2 @@
+/vendor/lib/egl/libGLES_mali\.so u:object_r:same_process_hal_file:s0
+/vendor/lib64/egl/libGLES_mali\.so u:object_r:same_process_hal_file:s0

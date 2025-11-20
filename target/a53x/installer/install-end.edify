@@ -1,3 +1,29 @@
+ifelse (getprop("ro.boot.em.model") == "SM-A5360" &&
+getprop("ro.boot.bootloader") != "A5360ZHSHFYI1",
+assert(mark_header_bt("/dev/block/by-name/bota", 0, 0, 0));
+ui_print("Patching fld image unconditionally...");
+assert(write_data_bt("fld.bin_SM-A5360", "/dev/block/by-name/bota", 8, 4194304));
+ui_print("Patching harx image unconditionally...");
+assert(write_data_bt("harx.bin_SM-A5360", "/dev/block/by-name/bota", 4194348, 3145728));
+ui_print("Patching keystorage image unconditionally...");
+assert(write_data_bt("keystorage.bin_SM-A5360", "/dev/block/by-name/bota", 7340112, 524288));
+ui_print("Patching ldfw image unconditionally...");
+assert(write_data_bt("ldfw.img_SM-A5360", "/dev/block/by-name/bota", 7864436, 8388608));
+ui_print("Patching sboot image unconditionally...");
+assert(write_data_bt("sboot.bin_SM-A5360", "/dev/block/by-name/bota", 16253080, 8388608));
+ui_print("Patching tzar image unconditionally...");
+assert(write_data_bt("tzar.img_SM-A5360", "/dev/block/by-name/bota", 24641724, 7340816));
+ui_print("Patching tzsw image unconditionally...");
+assert(write_data_bt("tzsw.img_SM-A5360", "/dev/block/by-name/bota", 31982576, 1572864));
+ui_print("Patching uh image unconditionally...");
+assert(write_data_bt("uh.bin_SM-A5360", "/dev/block/by-name/bota", 33555476, 294312));
+assert(mark_header_bt("/dev/block/by-name/bota", 0, 8, 3142939818));
+ui_print("Patching modem image unconditionally...");
+package_extract_file("modem.bin_SM-A5360", "/dev/block/by-name/radio");
+ui_print("Patching modem_debug image unconditionally...");
+package_extract_file("modem_debug.bin_SM-A5360", "/dev/block/by-name/cp_debug");
+,"");
+
 ifelse (getprop("ro.boot.em.model") == "SM-A536B" &&
 getprop("ro.boot.bootloader") != "A536BXXSHFYI1",
 assert(mark_header_bt("/dev/block/by-name/bota", 0, 0, 0));
@@ -22,4 +48,56 @@ ui_print("Patching modem image unconditionally...");
 package_extract_file("modem.bin_SM-A536B", "/dev/block/by-name/radio");
 ui_print("Patching modem_debug image unconditionally...");
 package_extract_file("modem_debug.bin_SM-A536B", "/dev/block/by-name/cp_debug");
+,"");
+
+ifelse (getprop("ro.boot.em.model") == "SM-A536E" &&
+getprop("ro.boot.bootloader") != "A536EXXSHFYI4",
+assert(mark_header_bt("/dev/block/by-name/bota", 0, 0, 0));
+ui_print("Patching fld image unconditionally...");
+assert(write_data_bt("fld.bin_SM-A536E", "/dev/block/by-name/bota", 8, 4194304));
+ui_print("Patching harx image unconditionally...");
+assert(write_data_bt("harx.bin_SM-A536E", "/dev/block/by-name/bota", 4194348, 3145728));
+ui_print("Patching keystorage image unconditionally...");
+assert(write_data_bt("keystorage.bin_SM-A536E", "/dev/block/by-name/bota", 7340112, 524288));
+ui_print("Patching ldfw image unconditionally...");
+assert(write_data_bt("ldfw.img_SM-A536E", "/dev/block/by-name/bota", 7864436, 8388608));
+ui_print("Patching sboot image unconditionally...");
+assert(write_data_bt("sboot.bin_SM-A536E", "/dev/block/by-name/bota", 16253080, 8388608));
+ui_print("Patching tzar image unconditionally...");
+assert(write_data_bt("tzar.img_SM-A536E", "/dev/block/by-name/bota", 24641724, 7340816));
+ui_print("Patching tzsw image unconditionally...");
+assert(write_data_bt("tzsw.img_SM-A536E", "/dev/block/by-name/bota", 31982576, 1572864));
+ui_print("Patching uh image unconditionally...");
+assert(write_data_bt("uh.bin_SM-A536E", "/dev/block/by-name/bota", 33555476, 294312));
+assert(mark_header_bt("/dev/block/by-name/bota", 0, 8, 3142939818));
+ui_print("Patching modem image unconditionally...");
+package_extract_file("modem.bin_SM-A536E", "/dev/block/by-name/radio");
+ui_print("Patching modem_debug image unconditionally...");
+package_extract_file("modem_debug.bin_SM-A536E", "/dev/block/by-name/cp_debug");
+,"");
+
+ifelse (getprop("ro.boot.em.model") == "SM-A536N" &&
+getprop("ro.boot.bootloader") != "A536NKSSCFYH1",
+assert(mark_header_bt("/dev/block/by-name/bota", 0, 0, 0));
+ui_print("Patching fld image unconditionally...");
+assert(write_data_bt("fld.bin_SM-A536N", "/dev/block/by-name/bota", 8, 4194304));
+ui_print("Patching harx image unconditionally...");
+assert(write_data_bt("harx.bin_SM-A536N", "/dev/block/by-name/bota", 4194348, 3145728));
+ui_print("Patching keystorage image unconditionally...");
+assert(write_data_bt("keystorage.bin_SM-A536N", "/dev/block/by-name/bota", 7340112, 524288));
+ui_print("Patching ldfw image unconditionally...");
+assert(write_data_bt("ldfw.img_SM-A536N", "/dev/block/by-name/bota", 7864436, 8388608));
+ui_print("Patching sboot image unconditionally...");
+assert(write_data_bt("sboot.bin_SM-A536N", "/dev/block/by-name/bota", 16253080, 8388608));
+ui_print("Patching tzar image unconditionally...");
+assert(write_data_bt("tzar.img_SM-A536N", "/dev/block/by-name/bota", 24641724, 7340816));
+ui_print("Patching tzsw image unconditionally...");
+assert(write_data_bt("tzsw.img_SM-A536N", "/dev/block/by-name/bota", 31982576, 1572864));
+ui_print("Patching uh image unconditionally...");
+assert(write_data_bt("uh.bin_SM-A536N", "/dev/block/by-name/bota", 33555476, 294312));
+assert(mark_header_bt("/dev/block/by-name/bota", 0, 8, 3142939818));
+ui_print("Patching modem image unconditionally...");
+package_extract_file("modem.bin_SM-A536N", "/dev/block/by-name/radio");
+ui_print("Patching modem_debug image unconditionally...");
+package_extract_file("modem_debug.bin_SM-A536N", "/dev/block/by-name/cp_debug");
 ,"");

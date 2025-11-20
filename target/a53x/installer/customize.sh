@@ -13,10 +13,13 @@ BOOTLOADER_BLOBS=(
 )
 
 declare -A MODEL_TAGS=(
+    [A5360]="A5360ZHSHFYI1_TGY_OZS"
     [A536B]="A536BXXSHFYI1_EUX_OXM"
+    [A536E]="A536EXXSHFYI4_INS_ODM"
+    [A536N]="A536NKSSCFYH1_KOO_OKR"
 )
 
-printf "%s\n" "A536B" | while read -r MODEL; do
+printf "%s\n" "A5360" "A536B" "A536E" "A536N" | while read -r MODEL; do
     MODEL_TAG="${MODEL_TAGS[$MODEL]}"
     [[ -z "${MODEL_TAG:-}" ]] && {
         ABORT "No tag defined for $MODEL"

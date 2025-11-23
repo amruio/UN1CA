@@ -1,0 +1,2 @@
+persist.audio.deepbuffer_delay=33
+enable_detecting_gnss_assert=false

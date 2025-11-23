@@ -61,7 +61,7 @@ jobs:
       - name: Set up Swap
         uses: pierotofy/set-swap-space@master
         with:
-          swap-size-gb: 1
+          swap-size-gb: 2
 
       - name: Build dependencies
         run: |

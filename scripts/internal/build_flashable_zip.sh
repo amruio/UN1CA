@@ -489,11 +489,28 @@ SIGN_IMAGE_WITH_AVB()
 
     if ! avbtool info_image --image "$FILE" &> /dev/null; then
         local PARTITION_NAME
+        local CANDIDATES
         PARTITION_NAME="$(basename "$FILE")"
         PARTITION_NAME="${PARTITION_NAME//.img/}"
 
-        local PARTITION_SIZE
-        PARTITION_SIZE="TARGET_$(tr "[:lower:]" "[:upper:]" <<< "$PARTITION_NAME")_PARTITION_SIZE"
+        IFS='_' read -r SEG1 SEG2 _ <<< "$PARTITION_NAME"
+
+        if [[ -n "$SEG1" ]]; then
+            CANDIDATES+=("TARGET_${SEG1^^}_PARTITION_SIZE")
+        fi
+
+        if [[ -n "$SEG1" ]] && [[ -n "$SEG2" ]] && [[ "$SEG2" == "boot" ]]; then
+            CANDIDATES+=("TARGET_${SEG1^^}_${SEG2^^}_PARTITION_SIZE")
+        fi
+
+        for i in "${CANDIDATES[@]}"; do
+            VALUE="${!i:-}"
+            if [[ -n "$VALUE" ]]; then
+                PARTITION_SIZE="$i"
+                break
+            fi
+        done
+
         _CHECK_NON_EMPTY_PARAM "$PARTITION_SIZE" "${!PARTITION_SIZE//none/}" || exit 1
 
         local CMD

@@ -1,0 +1,4 @@
+vendor/etc/permissions/android.hardware.vulkan.version.xml 0 0 644 capabilities=0x0
+vendor/etc/permissions/android.software.vulkan.deqp.level.xml 0 0 644 capabilities=0x0
+vendor/lib/egl/libGLES_mali.so 0 0 644 capabilities=0x0
+vendor/lib64/egl/libGLES_mali.so 0 0 644 capabilities=0x0

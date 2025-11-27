@@ -1,0 +1,4 @@
+id=bt-lib-patch
+name=Bluetooth Library Patcher
+author=Flopster101
+description=Fixes AAC audio quality on Samsung devices by forcing CBR mode in the A2DP codec.

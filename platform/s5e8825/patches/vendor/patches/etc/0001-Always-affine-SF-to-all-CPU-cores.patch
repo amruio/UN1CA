@@ -1,0 +1,36 @@
+From 988a7f4b6c6f54394294bb6a18432551fed77815 Mon Sep 17 00:00:00 2001
+From: =?UTF-8?q?Nahuel=20G=C3=B3mez?= <nahuelgomez329@gmail.com>
+Date: Tue, 16 Dec 2025 23:01:11 +0100
+Subject: [PATCH] Always affine SF to all CPU cores
+
+Change-Id: I6ce77416ef9519e6520ce24a5ce3b73dad0780db
+Signed-off-by: Majaahh <maja.blaszczak@proton.me>
+---
+ task_profiles.json | 4 ++--
+ 1 file changed, 2 insertions(+), 2 deletions(-)
+
+diff --git a/task_profiles.json b/task_profiles.json
+index 14e3062..c3d5175 100644
+--- a/task_profiles.json
++++ b/task_profiles.json
+@@ -622,7 +622,7 @@
+           "Params":
+           {
+             "Name": "GpisSfCpuset",
+-            "Value": "6-7"
++            "Value": "0-7"
+           }
+         }
+       ]
+@@ -635,7 +635,7 @@
+           "Params":
+           {
+             "Name": "GpisSfCpuset",
+-            "Value": "0-5"
++            "Value": "0-7"
+           }
+         }
+       ]
+-- 
+2.52.0
+

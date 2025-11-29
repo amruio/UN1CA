@@ -1,0 +1,31 @@
+From 4d30008fa7540d527500784de78e47387fe82c77 Mon Sep 17 00:00:00 2001
+From: Majaahh <maja.blaszczak@proton.me>
+Date: Fri, 5 Dec 2025 12:02:48 +0100
+Subject: [PATCH] Create carrier folder for HiddenMenu
+
+Change-Id: I77e06700c8461e7815b2ef39f373d82cbe1c7ffd
+Signed-off-by: Majaahh <maja.blaszczak@proton.me>
+---
+ init.s5e8825.rc | 6 ++++++
+ 1 file changed, 6 insertions(+)
+
+diff --git a/init.s5e8825.rc b/init.s5e8825.rc
+index cfb3ffc..55216a3 100644
+--- a/init.s5e8825.rc
++++ b/init.s5e8825.rc
+@@ -914,6 +914,12 @@ on property:ro.factory.factory_binary=factory
+     chown system system /sys/kernel/asv-g/modem_fused_volt
+     chown system system /sys/kernel/asv-g/modem_grp_volt
+ 
++# Create carrier folder for HiddenMenu
++on post-fs
++    mkdir /efs/carrier 0755 radio system
++    chown radio system /efs/carrier
++    chown radio system /efs/carrier/HiddenMenu
++
+ # KERNEL CORE MEMORY
+ on boot
+     write /proc/sys/vm/swappiness 130
+-- 
+2.52.0
+

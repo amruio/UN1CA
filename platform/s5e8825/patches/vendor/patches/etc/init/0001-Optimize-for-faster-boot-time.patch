@@ -1,0 +1,46 @@
+From fd865cc93273a02c38a22146e155f7911b2e5b6a Mon Sep 17 00:00:00 2001
+From: amruio <uioamr65@gmail.com>
+Date: Thu, 10 Jul 2025 17:18:17 +0300
+Subject: [PATCH] Optimize for faster boot time
+
+Change-Id: I8cbd808eb10520ecabfab7c4727bc0298e33ec19
+Signed-off-by: Majaahh <maja.blaszczak@proton.me>
+---
+ init.s5e8825.rc | 6 ++++--
+ 1 file changed, 4 insertions(+), 2 deletions(-)
+
+diff --git a/init.s5e8825.rc b/init.s5e8825.rc
+index ed2a237..279ab72 100644
+--- a/init.s5e8825.rc
++++ b/init.s5e8825.rc
+@@ -601,15 +601,17 @@ on boot
+     chmod 0664 /sys/class/usb_notify/usb_control/usb_data_enabled
+ 
+ on early-fs
++    mount_all /vendor/etc/fstab.${ro.hardware} --early
+     write /sys/devices/platform/fmp/fmp-fips/fmp_fips_run 1
+ 
+ on late-fs
+     wait_for_prop hwservicemanager.ready true
++    start bootanim
++    class_start animation
+     mount_all /vendor/etc/fstab.${ro.hardware} --late
+ 
+ on fs
+     start hwservicemanager
+-    mount_all /vendor/etc/fstab.${ro.hardware} --early
+ 
+     wait /dev/block/by-name/sec_efs
+     mount ext4 /dev/block/by-name/sec_efs /efs nosuid nodev noatime noauto_da_alloc,discard,journal_checksum,data=ordered,errors=panic
+@@ -945,7 +947,7 @@ on property:ro.factory.factory_binary=factory
+     chown system system /sys/kernel/asv-g/modem_grp_volt
+ 
+ # Create carrier folder for HiddenMenu
+-on post-fs
++on property:sys.boot_completed=1
+     mkdir /efs/carrier 0755 radio system
+     chown radio system /efs/carrier
+     chown radio system /efs/carrier/HiddenMenu
+-- 
+2.52.0
+

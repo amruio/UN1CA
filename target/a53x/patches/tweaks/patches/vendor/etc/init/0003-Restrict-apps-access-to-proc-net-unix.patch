@@ -1,0 +1,34 @@
+From 52e8c90f1650a6b6ebfc069a69c035b9fca5f2fd Mon Sep 17 00:00:00 2001
+From: Jeferson Oliveira <jroliveira.oliveira301@gmail.com>
+Date: Wed, 16 Aug 2023 19:36:59 +0200
+Subject: [PATCH] Restrict apps access to /proc/net/unix
+
+* Banking apps read the file /proc/net/unix to
+  check system modifications, (in our case, custom rom)
+  Let's avoid this by chmod it 440.
+
+Test: Install a banking app as of Brazilian Nubank or PicPay, login.
+      Observed no side effects on any other proccess or apps.
+Change-Id: Ic5f91e195b0b3b60fffff4eb0c427b6ed5574a67
+Signed-off-by: Majaahh <maja.blaszczak@proton.me>
+---
+ init.s5e8825.rc | 3 +++
+ 1 file changed, 3 insertions(+)
+
+diff --git a/init.s5e8825.rc b/init.s5e8825.rc
+index c0e80aa..3f376ae 100644
+--- a/init.s5e8825.rc
++++ b/init.s5e8825.rc
+@@ -960,6 +960,9 @@ on property:sys.boot_completed=1
+     write /sys/devices/platform/13500000.ufs/clkgate_enable 1
+     write /sys/devices/platform/13500000.ufs/auto_hibern8 2000
+ 
++    # Only owner can acces this node
++    chmod 440 /proc/net/unix
++
+ # KERNEL CORE MEMORY
+ on boot
+     write /proc/sys/vm/swappiness 130
+-- 
+2.52.0
+

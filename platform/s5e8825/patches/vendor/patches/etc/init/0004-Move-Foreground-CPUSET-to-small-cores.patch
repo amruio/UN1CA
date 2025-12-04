@@ -1,0 +1,29 @@
+From 69c5b0eb304f99482bf2f3f355e567166d094556 Mon Sep 17 00:00:00 2001
+From: amruio <uioamr65@gmail.com>
+Date: Wed, 13 Aug 2025 06:13:36 +0300
+Subject: [PATCH] Move Foreground CPUSET to small cores
+
+* Helps free up big cores for more important tasks
+
+Change-Id: I8194303b63670bd3428f1dd09d37920b3aaccf87
+Signed-off-by: Majaahh <maja.blaszczak@proton.me>
+---
+ init.s5e8825.rc | 2 ++
+ 1 file changed, 2 insertions(+)
+
+diff --git a/init.s5e8825.rc b/init.s5e8825.rc
+index 8eb12af..a664742 100644
+--- a/init.s5e8825.rc
++++ b/init.s5e8825.rc
+@@ -960,6 +960,8 @@ on property:sys.boot_completed=1
+     write /sys/devices/platform/13500000.ufs/clkgate_enable 1
+     write /sys/devices/platform/13500000.ufs/auto_hibern8 2000
+ 
++    write /dev/cpuset/foreground/cpus 0-5
++
+ # KERNEL CORE MEMORY
+ on boot
+     write /proc/sys/vm/swappiness 130
+-- 
+2.52.0
+

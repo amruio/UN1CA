@@ -1,0 +1,28 @@
+From f0d24d0902c9f9bc4c951f32aa7a7c1d5adf1182 Mon Sep 17 00:00:00 2001
+From: amruio <uioamr65@gmail.com>
+Date: Wed, 13 Aug 2025 06:19:57 +0300
+Subject: [PATCH] Move SF CPUSET to big cores
+
+* Significantly reduces UX lags
+
+Change-Id: Ida44c89ac5ab5728eef9229d4bcc2ecc23eac90e
+Signed-off-by: Majaahh <maja.blaszczak@proton.me>
+---
+ init.s5e8825.rc | 1 +
+ 1 file changed, 1 insertion(+)
+
+diff --git a/init.s5e8825.rc b/init.s5e8825.rc
+index 8268bf7..45bc570 100644
+--- a/init.s5e8825.rc
++++ b/init.s5e8825.rc
+@@ -962,6 +962,7 @@ on property:sys.boot_completed=1
+ 
+     write /dev/cpuset/foreground/cpus 0-5
+     write /dev/cpuset/background/cpus 0-1
++    write /dev/cpuset/sf/cpus 6-7
+ 
+ # KERNEL CORE MEMORY
+ on boot
+-- 
+2.52.0
+

@@ -36,7 +36,7 @@ ADD_TO_WORK_DIR "$TARGET_FIRMWARE" "system" "system/lib64/libsamsungSoundbooster
 LOG_STEP_OUT
 
 LOG_STEP_IN "- Replacing bluetooth apex"
-ADD_TO_WORK_DIR "a54xnsxx" "system" "system/apex/com.android.bt.apex" 0 0 644 "u:object_r:system_file:s0"
+ADD_TO_WORK_DIR "$TARGET_FIRMWARE" "system" "system/apex/com.android.bt.apex" 0 0 644 "u:object_r:system_file:s0"
 LOG_STEP_OUT
 
 LOG_STEP_IN "- Replacing Camera blobs"

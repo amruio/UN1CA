@@ -32,9 +32,6 @@ APPLY_PARTITION_PATCH()
 # ]
 
 APPLY_PARTITION_PATCH "vendor" "etc" "0001-Always-affine-SF-to-all-CPU-cores.patch"
-APPLY_PARTITION_PATCH "vendor" "etc/init" "0001-Optimize-for-faster-boot-time.patch"
-APPLY_PARTITION_PATCH "vendor" "etc/init" "0002-Disable-UFS-Power-Saving-on-Init.patch"
-APPLY_PARTITION_PATCH "vendor" "etc/init" "0003-Restrict-apps-access-to-proc-net-unix.patch"
 
 LOG_STEP_IN "- Updating GPU blobs"
 ADD_TO_WORK_DIR "a54xnsxx" "vendor" "lib/egl"
